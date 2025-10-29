@@ -43,7 +43,7 @@ export const getBlogPosts = unstable_cache(async () => {
     const { metadata }: { metadata?: Config } = (await evaluate(
       relevantContent,
       { ...runtime }
-    )) as any;
+    )) as never;
 
     if (metadata == null) {
       return null;

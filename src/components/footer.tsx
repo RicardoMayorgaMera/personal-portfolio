@@ -2,7 +2,7 @@ import { Button } from "./ui/button";
 
 export default function Footer() {
   return (
-    <footer className="flex flex-col md:flex-row justify-between items-center text-center h-20 max-w-216 mx-auto py-8 ">
+    <footer className="flex flex-col md:flex-row justify-between items-center text-center min-h-20 max-w-216 mx-auto py-16 ">
       <div className="flex flex-row ">
         <Button variant="link" asChild>
           <a href="mailto:ricardo.mayorga9805@gmail.com">Email</a>

@@ -23,10 +23,10 @@ export default async function Home() {
           <div className="px-4">
             <h2 className="text-2xl font-semibold">Ricardo Mayorga Mera</h2>
             <p className="mb-2">Developer & Designer</p>
-            <p className="text-lg text-accent-foreground text-balance">
-              Hi, I'm Ricardo. I'm a developer from Brussels. I'm currently
-              working as a consultant for Devoteam, developing easy to use
-              applications.
+            <p className="text-lg text-accent-foreground text-balance leading-none">
+              Hi, I&apos;m Ricardo. I&apos;m a developer from Brussels. I&apos;m
+              currently working as a consultant for Devoteam, developing easy to
+              use applications.
             </p>
           </div>
           <Button variant="link" asChild>
@@ -101,23 +101,23 @@ export default async function Home() {
         </header>
         <div className="col-span-3 md:col-span-2 text-lg">
           <p>
-            I’m a Frontend React Developer who loves building clean, intuitive,
-            and meaningful digital experiences.
+            I&apos;m a Frontend React Developer who loves building clean,
+            intuitive, and meaningful digital experiences.
           </p>
           <br />
           <p>
-            Over the past few years, I’ve worked on projects in telecom and fast
-            food, modernizing platforms and bringing ideas to life with React,
-            Next.js, TypeScript, and AWS. I’m passionate about creating things
-            that feel effortless to use — blending design, code, and a bit of
-            curiosity.
+            Over the past few years, I&apos;ve worked on projects in telecom and
+            fast food, modernizing platforms and bringing ideas to life with
+            React, Next.js, TypeScript, and AWS. I&apos;m passionate about
+            creating things that feel effortless to use — blending design, code,
+            and a bit of curiosity.
           </p>
           <br />
           <p>
-            Outside of work, you’ll usually find me playing football or
+            Outside of work, you&apos;ll usually find me playing football or
             basketball, tinkering in my homelab and I recently started getting
-            into photography. I love cars and my top 5 are probably all BMW's. I
-            hate the BMW XM though{" "}
+            into photography. I love cars and my top 5 are probably all
+            BMW&apos;s. I hate the BMW XM though{" "}
             <span className="text-accent-foreground">
               (Seriously, what were they thinking).
             </span>
@@ -126,8 +126,8 @@ export default async function Home() {
           </p>
           <br />
           <p>
-            For me, development isn’t just about code — it’s about crafting
-            experiences that make technology feel a little more human.
+            For me, development isn&apos;t just about code — it&apos;s about
+            crafting experiences that make technology feel a little more human.
           </p>
         </div>
       </section>
