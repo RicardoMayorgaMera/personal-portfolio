@@ -1582,7 +1582,7 @@ const customComponents: MDXComponents = {
       className="group no-underline"
     >
       <h1
-        className={`${hBaseCn} text-4xl sm:text-5xl font-extralight leading-tight`}
+        className={`${hBaseCn} text-4xl sm:text-5xl font-extralight leading-tight font-sans`}
         {...props}
       >
         <span className="text-gray-50 -left-6 opacity-0 group-hover:opacity-100 absolute no-underline -translate-x-full duration-200 transition-opacity">
@@ -1658,7 +1658,7 @@ const customComponents: MDXComponents = {
   ),
   code: (props) => (
     <code
-      className="bg-[#1a1b26] rounded text-indigo-200 font-mono py-0.5 md:py-2 px-0.5 md:px-1 text-sm md:text-lg border-2"
+      className="bg-[#1a1b26] rounded text-indigo-200 font-mono py-0.5 md:py-2 px-0.5 md:px-1 text-sm border-2"
       {...props}
     />
   ),
@@ -1669,7 +1669,7 @@ const customComponents: MDXComponents = {
         <Code
           lang={lang}
           theme={codeTheme}
-          codeClassName="text-sm md:text-md"
+          codeClassName="text-sm md:text-md font-mono"
           {...props}
         />
         <div className="absolute right-5 top-1/2 -translate-y-1/2">

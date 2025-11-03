@@ -1,47 +1,43 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import Image from "next/image";
 import { Link } from "next-view-transitions";
 import { getBlogPosts } from "./blog/getPosts";
 import { wrapTitleWithViewTransitionNames } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import ProjectCard from "@/components/project-card";
 
 export default async function Home() {
   const allPosts = await getBlogPosts();
   const posts = allPosts.filter((post) => post.published);
 
   return (
-    <div className="flex flex-col gap-12 max-w-216 mx-auto my-0">
+    <div className="flex flex-col gap-12 max-w-5xl mx-auto my-0">
       {/* Hero Section */}
       <section className="grid grid-cols-2 gap-4 ">
         <div className="col-span-2 md:col-span-1 text-left items-start md:py-12">
-          <div className="px-4">
+          <div>
             <h2 className="text-2xl font-semibold">Ricardo Mayorga Mera</h2>
             <p className="mb-2">Developer & Designer</p>
-            <p className="text-lg text-accent-foreground text-balance leading-none">
+            <p className="text-sm text-accent-foreground text-balance leading-6@@">
               Hi, I&apos;m Ricardo. I&apos;m a developer from Brussels. I&apos;m
               currently working as a consultant for Devoteam, developing easy to
               use applications.
             </p>
           </div>
-          <Button variant="link" asChild>
-            <a href="mailto:ricardo.mayorga9805@gmail.com">Email</a>
-          </Button>
-          <Button variant="link" asChild>
-            <a href="#about">Tell me more</a>
-          </Button>
+          <div className="flex flex-row gap-4 mt-4">
+            <Button className="p-0 underline-offset-4" variant="link" asChild>
+              <a href="mailto:ricardo.mayorga9805@gmail.com">Email</a>
+            </Button>
+            <Button className="p-0" variant="link" asChild>
+              <a href="#about">Tell me more</a>
+            </Button>
+          </div>
         </div>
         <div className="col-span-2 md:col-span-1 relative">
           <Image
             src="https://cdn.shadcnstudio.com/ss-assets/components/card/image-3.png"
             alt="Ricardo Mayorga"
             fill
-            className="object-cover rounded ring-4 "
+            className="object-cover rounded ring-4"
           />
         </div>
       </section>
@@ -51,25 +47,13 @@ export default async function Home() {
         </header>
         <div className="col-span-3 md:col-span-2 grid grid-cols-1 gap-6">
           {Array.from({ length: 5 }).map((_, index) => (
-            <Card key={index} className="grid grid-cols-2 py-2">
-              <CardContent className="px-2">
-                <div className="h-full w-full relative">
-                  <Image
-                    src="https://cdn.shadcnstudio.com/ss-assets/components/card/image-3.png"
-                    alt="something"
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover rounded"
-                  />
-                </div>
-              </CardContent>
-              <CardHeader className="w-full px-2 py-8">
-                <CardTitle>Project {index}</CardTitle>
-                <CardDescription>
-                  This project has a description that is useful to the reader
-                </CardDescription>
-              </CardHeader>
-            </Card>
+            <ProjectCard
+              key={index}
+              title={`Project ${index}`}
+              description="Description useful to the reader"
+              imageUrl="https://cdn.shadcnstudio.com/ss-assets/components/card/image-3.png"
+              imageDescription="Picture of a something"
+            />
           ))}
         </div>
       </section>

@@ -1,12 +1,12 @@
+import { cn } from "@/lib/utils";
 import React from "react";
 
-// The Word component, also converted to Tailwind
 export function Word({
   children,
   scale,
   italic,
   offset = 0,
-  style, // Changed from `xstyle` to `style`
+  style,
 }: Readonly<{
   children: string;
   scale: number;
@@ -14,31 +14,18 @@ export function Word({
   offset?: number;
   style?: React.CSSProperties; // Takes inline styles now
 }>) {
-  const height = 22;
-
-  // Base text classes
-  const textBase =
-    "fill-current font-inter text-[28px] font-extrabold leading-none uppercase";
-  // Classes to apply when `italic` is true
-  const textItalic =
-    "font-baskerville tracking-[-0.05em] text-[29px] italic font-light normal-case";
-
   return (
     <span
-      // All the complex color selectors are now Tailwind arbitrary modifiers
-      // I've used placeholder colors; you can replace them as needed.
       className={`
         basis-0 min-h-8 m-0 p-0
         text-foreground
         [&:nth-child(3n+2):not([data-italic])]:text-neutral-500
         [&:nth-child(3n+3):not([data-italic])]:text-neutral-700
         data-italic:text-red-800
-        [&[data-italic]:nth-child(3n+2)]:text-purple-300
-        [&[data-italic]:nth-child(3n+3)]:text-green-600
-        [&[data-italic]:nth-child(3n+4)]:text-pink-500
+        [&[data-italic]:nth-child(3n+2)]:text-yellow-300
+        [&[data-italic]:nth-child(3n+3)]:text-blue-600
+        [&[data-italic]:nth-child(3n+4)]:text-red-500
       `}
-      // Dynamic styles (flexGrow, minWidth) and viewTransitionName (from `style` prop)
-      // are applied as inline styles.
       style={{
         flexGrow: scale,
         minWidth: `calc(${scale + "px"} + ${scale} * 0.1vw)`,
@@ -47,12 +34,13 @@ export function Word({
       data-italic={italic}
     >
       <span className="flex items-start justify-center h-full overflow-hidden relative">
-        <svg
-          className="aspect-[inherit] w-full"
-          viewBox={`0 0 ${scale} ${height}`}
-        >
+        <svg className="aspect-[inherit] w-full" viewBox={`0 0 ${scale} 22`}>
           <text
-            className={italic ? `${textBase} ${textItalic}` : textBase}
+            className={cn(
+              "fill-current font-display text-[28px] font-extrabold leading-none uppercase",
+              italic &&
+                "font-serif tracking-[-0.05em] text-[29px] italic font-light normal-case"
+            )}
             x={offset}
             y={21}
           >
@@ -104,6 +92,7 @@ export function Container({
       return React.cloneElement(child as React.ReactElement<typeof Word>, {
         key: child.key ?? i,
         // The dynamic viewTransitionName is now passed as an inline style
+        // @ts-expect-error does not recognize style prop
         style: {
           viewTransitionName:
             "_" +
@@ -128,18 +117,15 @@ export function Container({
     return child;
   });
 
-  // Combine base classes, conditional classes, and the passed `className` prop
-  const containerClasses = [
-    "flex items-center justify-center flex-wrap w-full max-w-[54rem] mx-auto gap-y-2",
-    // Logic from styles.container and styles.containerInLink
-    href != null ? "mb-0" : "mb-32",
-    className, // Pass through any extra classes
-  ]
-    .filter(Boolean)
-    .join(" ");
-
   const el = (
-    <h1 className={containerClasses} aria-label={words.join(" ")}>
+    <h1
+      className={cn(
+        "flex items-center justify-center flex-wrap w-full max-w-216 mx-auto gap-y-2",
+        href !== null ? "mb-0" : "mb-32",
+        className
+      )}
+      aria-label={words.join(" ")}
+    >
       <span aria-hidden={true} style={{ display: "contents" }}>
         {childrenWithNames}
       </span>

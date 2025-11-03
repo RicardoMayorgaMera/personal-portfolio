@@ -4,7 +4,14 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Footer from "@/components/footer";
 import { ViewTransitions } from "next-view-transitions";
 import { Toaster } from "@/components/ui/sonner";
-import { IBM_Plex_Sans, Libre_Baskerville } from "next/font/google";
+import {
+  Baskervville,
+  IBM_Plex_Sans,
+  Libre_Baskerville,
+  Roboto_Mono,
+} from "next/font/google";
+import localFont from "next/font/local";
+import { NextIntlClientProvider } from "next-intl";
 
 export const metadata: Metadata = {
   title: "Ricardo Mayorga | Developer | Designer",
@@ -12,16 +19,27 @@ export const metadata: Metadata = {
 };
 
 const plex = IBM_Plex_Sans({
-  subsets: ["latin"],
+  subsets: ["latin-ext"],
   display: "swap",
   variable: "--font-plex",
 });
 
-const baskerville = Libre_Baskerville({
-  subsets: ["latin"],
+const baskervville = Baskervville({
+  subsets: ["latin-ext"],
   display: "swap",
-  variable: "--font-baskerville",
+  variable: "--font-baskervville",
   weight: ["400", "700"],
+});
+
+const roboto_mono = Roboto_Mono({
+  subsets: ["latin-ext"],
+  display: "swap",
+  variable: "--font-roboto-mono",
+});
+
+const nohemi = localFont({
+  src: "../fonts/Nohemi-Black.woff2",
+  variable: "--font-nohemi",
 });
 
 export default function RootLayout({
@@ -33,7 +51,7 @@ export default function RootLayout({
     <ViewTransitions>
       <html lang="en">
         <body
-          className={`${plex.variable} ${baskerville.variable} antialiased`}
+          className={`${plex.variable} ${baskervville.variable} ${roboto_mono.variable} ${nohemi.variable} antialiased`}
         >
           <ThemeProvider
             attribute="class"
